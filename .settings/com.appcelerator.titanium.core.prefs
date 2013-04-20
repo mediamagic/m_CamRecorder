@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+provisioning_profiles/development/5BEE5CB6-2B40-4B74-A454-FC8235CACECA/appid=*
+provisioning_profiles/development/5BEE5CB6-2B40-4B74-A454-FC8235CACECA/name=iOS Team Provisioning Profile\: *
+provisioning_profiles/development/5BEE5CB6-2B40-4B74-A454-FC8235CACECA/uuid=5BEE5CB6-2B40-4B74-A454-FC8235CACECA
+provisioning_profiles/development/7BD021F5-4684-48C0-A535-F73CE02C3EA8/appid=*
+provisioning_profiles/development/7BD021F5-4684-48C0-A535-F73CE02C3EA8/name=mmdev iOS
+provisioning_profiles/development/7BD021F5-4684-48C0-A535-F73CE02C3EA8/uuid=7BD021F5-4684-48C0-A535-F73CE02C3EA8
+provisioning_profiles/development/9A50C0E6-F5C0-4217-B74D-5B93ABC3C1BC/appid=il.co.mmdev.*
+provisioning_profiles/development/9A50C0E6-F5C0-4217-B74D-5B93ABC3C1BC/name=Test Provision
+provisioning_profiles/development/9A50C0E6-F5C0-4217-B74D-5B93ABC3C1BC/uuid=9A50C0E6-F5C0-4217-B74D-5B93ABC3C1BC
+provisioning_profiles/development/C69741A8-653D-4331-B88C-2AC50C24BD60/appid=il.co.mmdev.*
+provisioning_profiles/development/C69741A8-653D-4331-B88C-2AC50C24BD60/name=mmdev ios b
+provisioning_profiles/development/C69741A8-653D-4331-B88C-2AC50C24BD60/uuid=C69741A8-653D-4331-B88C-2AC50C24BD60
