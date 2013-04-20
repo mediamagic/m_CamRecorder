@@ -26,6 +26,7 @@ var Table = require('ui/listWindows');
 var nav = Ti.UI.iPhone.createNavigationGroup({
 	backgroundImage:'assets/images/bg.jpg'
 });
+
 var videoWin = new Table([], 'Videos', nav, 'ui/windows/videoWindow');
 nav.window = videoWin;
 win.add(nav);
