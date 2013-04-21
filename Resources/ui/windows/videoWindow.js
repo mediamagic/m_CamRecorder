@@ -44,12 +44,15 @@ var win = function(data, nav) {
 	});
 	
 	videoWin.add(videoPlayer);
-	
-	videoPlayer.addEventListener('preload',function() {
-    	videoPlayer.play();
-    });
-	
-	
+
+	// videoPlayer.addEventListener('load',function() {
+		// console.log(videoPlayer.getDuration());
+    	// videoPlayer.play();
+    // });
+    
+    videoPlayer.play();
+    
+    	
 	// var btnDelete = Titanium.UI.createButtonBar({
 	    // labels:['Delete'],
 	    // backgroundColor:'#f00',

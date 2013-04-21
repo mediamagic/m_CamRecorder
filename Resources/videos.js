@@ -69,8 +69,21 @@ function loadVideos() {
 						text: d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getYear() + ' ' + d.getHours() + ':' + d.getMinutes(),
 						font:{fontSize:9},
 						color:'#343434',
-						left:250,
+						left:230,
 						top:5,
+						touchEnabled: false
+					})
+					
+					var durationMS = res[i].duration / 1000;			    	
+			    	var numminutes = Math.floor((((durationMS % 31536000) % 86400) % 3600) / 60);
+					var numseconds = Math.floor((((durationMS % 31536000) % 86400) % 3600) % 60);
+					var time = numminutes + ':' + numseconds;
+					var duration = Ti.UI.createLabel({
+						text: time,
+						font:{fontSize:9, fontWeight:'bold'},
+						color:'#343434',
+						left:230,
+						top:15,
 						touchEnabled: false
 					})
 					
@@ -89,6 +102,7 @@ function loadVideos() {
 					row.add(username);
 					row.add(title);
 					row.add(date);
+					row.add(duration);
 					
 					tableData.push(row);
 					

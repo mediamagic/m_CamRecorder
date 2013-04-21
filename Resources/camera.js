@@ -12,9 +12,10 @@ win.barImage ='assets/images/bg.jpg';
 win.backgroundImage = 'assets/images/bg.jpg';
 
 var media = null;
+var duration = 0;
 
 var uploading = Titanium.UI.createActivityIndicator({
-	message:'Uploading Video...',
+	message:'Uploading Video...(0%)',
 	width:50,
 	height:50,
 	color:'#fff'
@@ -139,11 +140,11 @@ btnUpload.addEventListener('click', function(e) {
 	win.remove(btnCancel);
 	win.remove(videoPlayerWin);
 		
-	uploading.title = 'Upload Video';
+	uploading.message = 'Uploading Video...(0%)';
 	uploading.show();
 	win.add(uploading);
 			
-	Videos.upload({file:media, fileName:(new Date()).getTime().toString() + '.mov', userName:global.userName, uuId:global.uuId, title:txtTitle.value }, 'video/quicktime', function(progress) {
+	Videos.upload({file:media, fileName:(new Date()).getTime().toString() + '.mov', duration:duration, userName:global.userName, uuId:global.uuId, title:txtTitle.value }, 'video/quicktime', function(progress) {
 		uploading.message = 'Uploading Video... (' + progress + '%)';		
 	}, function(err, res) {
 		uploading.hide();
@@ -151,6 +152,7 @@ btnUpload.addEventListener('click', function(e) {
 		txtTitle.value = '';
 				
 		media = null;
+		duration = 0;
 		
 		win.add(btnRecord);	
 		
@@ -208,6 +210,16 @@ btnRecord.addEventListener('click', function(e) {
     			movieControlStyle: Titanium.Media.VIDEO_CONTROL_DEFAULT,
     			autoplay: false
     		});
+    		
+    		videoPlayer.addEventListener('durationavailable',function(e) {
+    			duration = e.duration;
+		    	// var d = e.duration / 1000;
+// 		    	
+		    	// var numminutes = Math.floor((((d % 31536000) % 86400) % 3600) / 60);
+				// var numseconds = Math.floor((((d % 31536000) % 86400) % 3600) % 60);
+				// var time = numminutes + ':' + numseconds;
+				// console.log(time);
+		    });
 // 			
            	// videoPlayer.addEventListener('load',function()
 		    // {
@@ -216,6 +228,7 @@ btnRecord.addEventListener('click', function(e) {
 //            
 			videoPlayerWin.add(videoPlayer);
 			win.add(videoPlayerWin);
+			
 // 			
 			// videoPlayer.play();
 		},
