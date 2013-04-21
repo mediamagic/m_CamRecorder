@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-    <id>il.co.mediamagic.camRecorder</id>
+    <id>il.co.mmdev.camRecorder</id>
     <name>CamRecorder</name>
     <version>1.0</version>
     <publisher>alkolombra</publisher>

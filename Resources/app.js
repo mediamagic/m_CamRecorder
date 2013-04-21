@@ -10,7 +10,9 @@ var handshake = new Resource('/handshake');
 
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup();
-
+global.nav = Ti.UI.iPhone.createNavigationGroup({
+	backgroundImage:'assets/images/bg.jpg'
+});
 
 //
 // create base UI tab and root window
@@ -44,7 +46,7 @@ var tabCamera = Titanium.UI.createTab({
 });
 
 tabCamera.addEventListener('focus', function(e) {
-	console.log('camera');
+	global.nav.close();
 });
 
 // var label2 = Titanium.UI.createLabel({

@@ -23,13 +23,13 @@ win.add(loading);
 loading.show();
 
 var Table = require('ui/listWindows');
-var nav = Ti.UI.iPhone.createNavigationGroup({
-	backgroundImage:'assets/images/bg.jpg'
-});
+// var nav = Ti.UI.iPhone.createNavigationGroup({
+	// backgroundImage:'assets/images/bg.jpg'
+// });
 
-var videoWin = new Table([], 'Videos', nav, 'ui/windows/videoWindow');
-nav.window = videoWin;
-win.add(nav);
+var videoWin = new Table([], 'Videos', global.nav, 'ui/windows/videoWindow');
+global.nav.window = videoWin;
+win.add(global.nav);
 
 function loadVideos() {
 	Videos.get({}, function(err, res) {
@@ -82,4 +82,6 @@ function loadVideos() {
 	});
 }
 
-loadVideos();
+win.addEventListener('focus', function(e) {
+	loadVideos();
+});
