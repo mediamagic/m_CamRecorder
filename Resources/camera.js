@@ -139,6 +139,7 @@ btnUpload.addEventListener('click', function(e) {
 	win.remove(btnCancel);
 	win.remove(videoPlayerWin);
 		
+	uploading.title = 'Upload Video';
 	uploading.show();
 	win.add(uploading);
 			
