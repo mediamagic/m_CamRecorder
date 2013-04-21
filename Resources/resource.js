@@ -26,11 +26,11 @@ module.exports = function(template) {
 					next(err, res);
 			});
 		},
-		upload: function(file, mimetype, next) {
+		upload: function(file, mimetype, progressFunction, next) {
 			new XHR('POST', template, file, function(err, res) {
 				if(next != null)
 					next(err, res);
-			}, mimetype);
+			}, mimetype, progressFunction);
 		}
 	}
 }

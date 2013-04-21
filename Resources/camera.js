@@ -141,8 +141,10 @@ btnUpload.addEventListener('click', function(e) {
 		
 	uploading.show();
 	win.add(uploading);
-	
-	Videos.upload({file:media, fileName:(new Date()).getTime().toString() + '.mov', userName:global.userName, uuId:global.uuId, title:txtTitle.value }, 'video/quicktime', function(err, res) {
+			
+	Videos.upload({file:media, fileName:(new Date()).getTime().toString() + '.mov', userName:global.userName, uuId:global.uuId, title:txtTitle.value }, 'video/quicktime', function(progress) {
+		uploading.message = 'Uploading Video... (' + progress + '%)';		
+	}, function(err, res) {
 		uploading.hide();
 		win.remove(uploading);
 		txtTitle.value = '';

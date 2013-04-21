@@ -1,4 +1,4 @@
-function handleRequest(method, action, data, next, mimetype) {
+function handleRequest(method, action, data, next, mimetype, progressFunction) {
 	var xhr = Ti.Network.createHTTPClient();
 	//xhr.setRequestHeader('X-HTTP-Method-Override', method);
 	
@@ -10,6 +10,23 @@ function handleRequest(method, action, data, next, mimetype) {
 	xhr.onerror = function() {
 		if(next != null) 
 			next('error', null);
+	}
+	
+	if(progressFunction) {
+		// xhr.upload.onprogress = function(e) {
+			// if (e.lengthComputable) {
+ 				// progressFunction(Math.ceil(((e.loaded / e.total) * 100))); 				     				
+ 			// }
+		// }
+		xhr.ondatastream = function(e)
+	  	{
+	    	progressFunction(Math.ceil((e.progress * 100)));		 
+	    };
+	 
+		xhr.onsendstream = function(e)
+	    {
+	    	progressFunction(Math.ceil((e.progress * 100)));		 
+	    };
 	}
 
 	xhr.open(method, global.host + action);
