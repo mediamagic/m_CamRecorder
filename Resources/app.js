@@ -39,6 +39,7 @@ var tabVideos = Titanium.UI.createTab({
 var winCamera = Titanium.UI.createWindow({ 
 	url:'camera.js'	
 });
+
 var tabCamera = Titanium.UI.createTab({  
     icon:'assets/images/camera.png',
     title:'Record Video',
@@ -64,16 +65,22 @@ tabCamera.addEventListener('focus', function(e) {
 //
 //  add tabs
 //
-tabGroup.addTab(tabVideos);  
-tabGroup.addTab(tabCamera);  
+tabGroup.addTab(tabVideos);
+tabGroup.addTab(tabCamera);
 
+function performHandshake() {
+	handshake.get({}, function(err, res) {
+		if(!err) { 
+			global.csrf = res.csrf;
+			winVideos.global = global;
+			winCamera.global = global;
+			tabGroup.open();	
+		} else {
+			setTimeout(function() {
+				performHandshake();	
+			}, 2000);			
+		}
+	});
+}
 
-// open tab group
-handshake.get({}, function(err, res) {
-	if(!err) { 
-		global.csrf = res.csrf;
-		winVideos.global = global;
-		winCamera.global = global;
-		tabGroup.open();	
-	}
-});
+performHandshake();
