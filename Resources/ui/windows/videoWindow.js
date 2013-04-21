@@ -31,19 +31,21 @@ var win = function(data, nav) {
    		title:'Recorded Video',
    		height:240,
    		width:320,
-   		bottom:0
+   		bottom:0,
+   		backgroundColor:'transparent'
    	});
    	
 	var videoPlayer = Ti.Media.createVideoPlayer({
 		media:global.host + '/videos/' + data.fileName,
 		scalingMode: Ti.Media.VIDEO_SCALING_MODE_FILL,
 		mediaControlStyle: Ti.Media.VIDEO_CONTROL_DEFAULT,
-		autoplay: true
+		autoplay: true,
+		backgroundColor:'transparent'
 	});
-
+	
 	videoWin.add(videoPlayer);
 	
-	videoPlayer.addEventListener('load',function() {
+	videoPlayer.addEventListener('preload',function() {
     	videoPlayer.play();
     });
 	

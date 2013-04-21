@@ -32,43 +32,67 @@ function loadVideos() {
 	Videos.get({}, function(err, res) {
 		var tableData = [];
 				
-		if(res && res.length > 0) {
-			for(var i = 0; i < res.length; i++) {
-				
-				var username = Ti.UI.createLabel({
-					text: res[i].userName,
-					font:{fontSize:12, fontWeight:'bold'},
-					color:'#343434',
-					left:50,
-					top:5,
-					touchEnabled: false
-				});
-				
-				var title = Ti.UI.createLabel({
-					text: res[i].title,
-					font:{fontSize:12},
-					color:'#343434',
-					left:50,
-					top:25,
-					touchEnabled: false
-				});
-				
-				var row = Ti.UI.createTableViewRow({
-					objName:'listRow',
-					rowIndex: i,
-					data:res[i],
-					height:50,
-					//title:res[i].name,
-					//backgroundColor:'transparent',
-					backgroundColor:'#ccc',
-					hasChild:true
-				});
-				
-				row.add(username);
-				row.add(title);
-				//row.add(imageView);
-				tableData.push(row);
-				
+		if(res) {
+			if(res.length > 0) {
+				for(var i = 0; i < res.length; i++) {
+					
+					var imageView = Ti.UI.createImageView({
+						image: global.host + '/videos/' + res[i].fileName + '.jpg',
+						top:2,
+						left:5,
+						width:60,
+						heigth:45,
+						preventDefaultImage:true,
+						touchEnabled: false	
+					});
+					
+					var username = Ti.UI.createLabel({
+						text: res[i].userName,
+						font:{fontSize:12, fontWeight:'bold'},
+						color:'#576c89',
+						left:70,
+						top:5,
+						touchEnabled: false
+					});
+					
+					var title = Ti.UI.createLabel({
+						text: res[i].title,
+						font:{fontSize:12},
+						color:'#343434',
+						left:70,
+						top:25,
+						touchEnabled: false
+					});
+					
+					var d = new Date(parseInt(res[i]._id.toString().slice(0,8), 16)*1000);
+					var date = Ti.UI.createLabel({
+						text: d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getYear() + ' ' + d.getHours() + ':' + d.getMinutes(),
+						font:{fontSize:9},
+						color:'#343434',
+						left:250,
+						top:5,
+						touchEnabled: false
+					})
+					
+					var row = Ti.UI.createTableViewRow({
+						objName:'listRow',
+						rowIndex: i,
+						data:res[i],
+						height:50,
+						//title:res[i].name,
+						//backgroundColor:'transparent',
+						backgroundColor:'#ccc',
+						hasChild:true
+					});
+					
+					row.add(imageView);
+					row.add(username);
+					row.add(title);
+					row.add(date);
+					
+					tableData.push(row);
+					
+				}
 			}
 		} else {
 			setTimeout(function() {
@@ -98,7 +122,7 @@ win.addEventListener('focus', function(e) {
 function formatDate()
 {
 	var date = new Date();
-	var datestr = date.getMonth()+'/'+date.getDate()+'/'+date.getFullYear();
+	var datestr = (date.getMonth() +1)+'/'+date.getDate()+'/'+date.getFullYear();
 	if (date.getHours()>=12)
 	{
 		datestr+=' '+(date.getHours()==12 ? date.getHours() : date.getHours()-12)+':'+date.getMinutes()+' PM';
