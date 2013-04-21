@@ -3,12 +3,12 @@ function handleRequest(method, action, data, next, mimetype) {
 	//xhr.setRequestHeader('X-HTTP-Method-Override', method);
 	
 	xhr.onload = function(resp) {
-		if(next) 
-			next(null, JSON.parse(resp.source.responseData));
+		if(next != null) 
+			next(null, JSON.parse(resp.source.responseData))
 	}
 	
 	xhr.onerror = function() {
-		if(next) 
+		if(next != null) 
 			next('error', null);
 	}
 

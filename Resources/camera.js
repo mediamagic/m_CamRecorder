@@ -131,6 +131,9 @@ txtTitle.addEventListener('change', function(e) {
 });
 
 btnUpload.addEventListener('click', function(e) {
+	// making sure the app won't auto-lock while uploading..
+	Titanium.App.idleTimerDisabled = true;
+	
 	win.remove(txtTitle);
 	win.remove(btnUpload);
 	win.remove(btnCancel);
@@ -147,6 +150,8 @@ btnUpload.addEventListener('click', function(e) {
 		media = null;
 		
 		win.add(btnRecord);	
+		
+		Titanium.App.idleTimerDisabled = false;
 	});
 });
 
