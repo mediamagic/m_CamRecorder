@@ -37,7 +37,7 @@ var win = function(data, nav) {
    	
 	var videoPlayer = Ti.Media.createVideoPlayer({
 		media:global.host + '/videos/' + data.fileName,
-		scalingMode: Ti.Media.VIDEO_SCALING_MODE_FILL,
+		scalingMode: Ti.Media.VIDEO_SCALING_ASPECT_FIT,
 		mediaControlStyle: Ti.Media.VIDEO_CONTROL_EMBEDDED,
 		autoplay: true,
 		backgroundColor:'transparent'

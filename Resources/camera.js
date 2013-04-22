@@ -206,7 +206,7 @@ btnRecord.addEventListener('click', function(e) {
            	           	
 			var videoPlayer = Ti.Media.createVideoPlayer({
 				media:e.media,
-				scalingMode: Titanium.Media.VIDEO_SCALING_MODE_FILL,
+				scalingMode: Titanium.Media.VIDEO_SCALING_ASPECT_FIT,
     			movieControlStyle: Titanium.Media.VIDEO_CONTROL_DEFAULT,
     			autoplay: false
     		});

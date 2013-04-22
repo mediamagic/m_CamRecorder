@@ -76,7 +76,9 @@ function loadVideos() {
 					
 					var durationMS = res[i].duration / 1000;			    	
 			    	var numminutes = Math.floor((((durationMS % 31536000) % 86400) % 3600) / 60);
+			    	numminutes = numminutes < 10 ? ('0' + numminutes).toString() : numminutes; 
 					var numseconds = Math.floor((((durationMS % 31536000) % 86400) % 3600) % 60);
+					numseconds = numseconds < 10 ? ('0' + numseconds).toString() : numseconds;
 					var time = numminutes + ':' + numseconds;
 					var duration = Ti.UI.createLabel({
 						text: time,
@@ -127,6 +129,13 @@ function loadVideos() {
 
 win.addEventListener('focus', function(e) {
 	global.nav.hide();
+	win.add(loading);
+	loading.show();
+	loadVideos();
+});
+
+Ti.Gesture.addEventListener('shake', function(e){
+   	global.nav.hide();
 	win.add(loading);
 	loading.show();
 	loadVideos();

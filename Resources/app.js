@@ -1,7 +1,7 @@
 Titanium.UI.setBackgroundColor('#000');
 Titanium.UI.setBackgroundImage('assets/images/bg.jpg')
 Titanium.UI.iPhone.statusBarStyle = Titanium.UI.iPhone.StatusBar.TRANSLUCENT_BLACK;
-
+//Ti.include('overrideTabs.js');
 var global = require('global');
 var XHR = require('xhr');
 var Resource = require('resource');
@@ -67,6 +67,13 @@ tabCamera.addEventListener('focus', function(e) {
 //
 tabGroup.addTab(tabVideos);
 tabGroup.addTab(tabCamera);
+
+// overrideTabs(
+    // tabGroup, // The tab group
+    // { backgroundColor: '#f00' }, // View parameters for the background
+    // { backgroundColor: '#999', color: '#000', style: 0 }, // View parameters for selected tabs 
+    // { backgroundColor: '#333', color: '#888', style: 0 } // View parameters for deselected tabs
+// );
 
 function performHandshake() {
 	handshake.get({}, function(err, res) {
